@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import Product from "../Components/Product"
 import { ProductContext } from "../Contexts/ProductContext";
 
 const Home = () => {
@@ -12,10 +13,21 @@ const Home = () => {
       product.category === "women's clothing"
     );
   });
-
-  console.log(filteredProduct); // ✅ Now correctly logs filtered products
-
-  return <div>Home Page</div>;
+  return (
+    <div>
+      <section className="p-14">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-9">
+            {filteredProduct.map((item) => {
+              return (
+                <Product items={item} key={item.id}/>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 };
 
 export default Home;
