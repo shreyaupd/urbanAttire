@@ -1,8 +1,8 @@
 import React ,{useState, createContext} from 'react'
 export const SidebarContext= createContext()
-const SidebarProvider = () => {
+const SidebarProvider = ({children}) => {
   return (
-    <div>SidebarContext</div>
+    <SidebarContext.Provider>{children}</SidebarContext.Provider>
   )
 }
  
