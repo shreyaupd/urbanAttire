@@ -13,7 +13,7 @@ const Product = ({ items }) => {
           <img
             className="cursor-pointer group-hover:scale-110 transition duration-300"
             src={image}
-            alt={title}
+            
           />
         </div>
 
