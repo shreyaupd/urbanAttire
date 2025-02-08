@@ -4,17 +4,17 @@ import "./index.css";
 import App from "./App.jsx";
 import ProductProvider from "./Contexts/ProductContext.jsx";
 import SidebarProvider from "./Contexts/SidebarContext.jsx";
-import CardProvider from "./Contexts/CardContext.jsx";
+import CartProvider from "./Contexts/CartContext.jsx";
 createRoot(document.getElementById("root")).render(
 
     <SidebarProvider>
-      <CardProvider>
+      <CartProvider>
         <ProductProvider>
         <StrictMode>
           <App />
           </StrictMode>
         </ProductProvider>
-      </CardProvider>
+      </CartProvider>
     </SidebarProvider>
 
 );

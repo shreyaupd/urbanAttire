@@ -1,31 +1,30 @@
 import React, { useState, useEffect, createContext } from "react";
-export const CardContext = createContext();
+export const CartContext = createContext();
 
-const CardProvider = ({ children }) => {
+const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
   const addtocart = (items, id) => {
     const newItem = { ...items, amount: 1 };
     const cartItem = cart.find((citem) => {
-      return citem.id === id;
+      return citem.id === id; //immidiate objct satisfying the condition
     });
     if (cartItem) {
       // If item exists, update its amount
       const newCart = cart.map((citem) =>
         citem.id === id ? { ...citem, amount: citem.amount + 1 } : citem
       );
-      setCart(newCart);
+      setCart(newCart);//update cart with newcart 
     } else {
       // If new item, add it to cart
-      setCart([...cart, newItem]);
+      setCart([...cart,newItem]);
     }
-    console.log(cart);
   };
   return (
-    <CardContext.Provider value={{ addtocart }}>
+    <CartContext.Provider value={{ cart,addtocart,setCart }}>
       {children}
-    </CardContext.Provider>
+    </CartContext.Provider>
   );
 };
 
-export default CardProvider;
+export default CartProvider;

@@ -1,10 +1,14 @@
 import React, { useContext } from "react";
 import { FaEye, FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { CardContext } from "../Contexts/CardContext";
+import { CartContext } from "../Contexts/CartContext";
 const Product = ({ items }) => {
-  const { addtocart } = useContext(CardContext);
+  const { addtocart } = useContext(CartContext);
   const { id, image, category, title, price } = items; // items is the prop
+  const[clicked,setClicked]=React.useState(false)
+  const MouseLeave=()=>{
+    setClicked(false)
+  }
   return (
     <div>
       {/* Increased container height and padding */}
@@ -21,8 +25,12 @@ const Product = ({ items }) => {
           {/* Plus Button */}
           <div className="absolute top-0 right-0 left-1.5 mt-1 rounded-full bg-gray-600/50 w-9 h-9 flex justify-center items-center">
             <button
-              onClick={() => addtocart(items,id)}
-              className="cursor-pointer w-7 h-7 flex justify-center items-center rounded-full hover:bg-white shadow-md bg-gray-200 transition"
+              onClick={() =>{
+                 addtocart(items,id )
+                 setClicked((prev)=>!prev)}}
+                 onMouseLeave={MouseLeave}
+
+              className={`cursor-pointer w-7 h-7 flex justify-center items-center rounded-full hover:bg-white shadow-md bg-gray-200 transition ${clicked ?'hover:scale-150 transition-all duration-500':'null'}`}
             >
               <FaPlus className="text-gray-700 text-lg" />
             </button>
