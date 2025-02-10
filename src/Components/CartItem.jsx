@@ -1,14 +1,16 @@
-import React from "react";
+import React,{useContext} from "react";
 import { Link } from "react-router-dom";
 import { IoIosClose, IoIosRemove, IoIosAdd } from "react-icons/io";
+import { CartContext } from "../Contexts/CartContext";
 
 const CartItem = ({ items }) => {
   const { image, title, price, amount, id } = items;
-
+const { removeFromCart } = useContext(CartContext);
   return (
     <div className="relative flex justify-between items-center p-4 border-b border-gray-200 hover:bg-gray-50 transition duration-200 bg-white shadow-sm rounded-lg mb-4">
       {/* Close (X) Button */}
-      <button className="absolute top-2 right-2 text-gray-500 hover:text-red-500 transition cursor-pointer border border-gray-300 p-2 rounded-full bg-gray-50 hover:bg-gray-200">
+      <button onClick={()=>{removeFromCart(id)}} 
+    className="absolute top-2 right-2 text-gray-500 hover:text-red-500 transition cursor-pointer border border-gray-300 p-2 rounded-full bg-gray-50 hover:bg-gray-200">
         <IoIosClose />
       </button>
 
@@ -57,7 +59,7 @@ const CartItem = ({ items }) => {
             {/* Prices */}
             <div className="flex flex-col text-gray-700 ml-4 text-right">
               <span className="font-semibold text-gray-900">
-                Total: {`$${parseFloat(price * amount).toFixed(2)}`}
+                {`$${parseFloat(price * amount).toFixed(2)}`}
               </span>
             </div>
           </div>

@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
-import { FaEye, FaPlus } from "react-icons/fa";
+import { IconButton, ButtonToolbar } from 'rsuite';
+import { FaEye } from "react-icons/fa";
+import PlusIcon from '@rsuite/icons/Plus';
 import { Link } from "react-router-dom";
 import { CartContext } from "../Contexts/CartContext";
 
@@ -28,18 +30,21 @@ const Product = ({ items }) => {
           />
         </div>
 
-        <div className="absolute top-0 right-0 mt-1 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300">
-          <div className="flex flex-col items-center space-y-2">
-            <button
+        <div className="absolute top-0 bg-transparent w-12 h-[84px] mt-1 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 right-0 md:group-hover:right-4">
+          <div className="absolute cursor-pointer top-0 right-0 left-1.5 mt-1 rounded-full bg-gray-400 w-10 h-10 flex justify-center items-center transition-transform duration-300 hover:bg-gray-600/79">
+            <ButtonToolbar
               onClick={handleAddToCart}
               onMouseLeave={MouseLeave}
-              className="w-10 h-10 flex justify-center items-center rounded-full bg-gray-400 hover:bg-gray-600 transition duration-200"
+              className="flex justify-center items-center w-full h-full bg-transparent border-none focus:outline-none"
             >
-              <FaPlus className="text-white" />
-            </button>
+              <IconButton icon={<PlusIcon className="mb-0.5 cursor-pointer" />} />
+            </ButtonToolbar>
+          </div>
+
+          <div className="absolute top-10 right-0 left-1.5 mt-2 rounded-full w-10 h-10 flex justify-center items-center transition">
             <Link
               to={`/product/${id}`}
-              className="w-10 h-10 flex justify-center items-center rounded-full bg-red-400 hover:bg-red-600 transition duration-200"
+              className="w-full h-full flex justify-center items-center rounded-full bg-red-400/50 hover:bg-red-400 transition duration-200"
             >
               <FaEye className="text-white" />
             </Link>
