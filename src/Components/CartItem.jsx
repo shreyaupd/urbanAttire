@@ -1,16 +1,19 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { IoIosClose, IoIosRemove, IoIosAdd } from "react-icons/io";
 import { CartContext } from "../Contexts/CartContext";
 
 const CartItem = ({ items }) => {
   const { image, title, price, amount, id } = items;
-const { removeFromCart } = useContext(CartContext);
+  const { removeFromCart, increaseAmount,decreaseAmount } = useContext(CartContext);
+
   return (
     <div className="relative flex justify-between items-center p-4 border-b border-gray-200 hover:bg-gray-50 transition duration-200 bg-white shadow-sm rounded-lg mb-4">
       {/* Close (X) Button */}
-      <button onClick={()=>{removeFromCart(id)}} 
-    className="absolute top-2 right-2 text-gray-500 hover:text-red-500 transition cursor-pointer border border-gray-300 p-2 rounded-full bg-gray-50 hover:bg-gray-200">
+      <button
+        onClick={() => removeFromCart(id)}
+        className="absolute top-2 right-2 text-gray-500 hover:text-red-500 transition cursor-pointer border border-gray-300 p-2 rounded-full bg-gray-50 hover:bg-gray-200"
+      >
         <IoIosClose />
       </button>
 
@@ -22,8 +25,8 @@ const { removeFromCart } = useContext(CartContext);
             <img
               src={image}
               alt={`Image of ${title}`}
-              className="w-full h-full object-contain" // Use object-contain to maintain aspect ratio
-              style={{ maxWidth: '100%', maxHeight: '100%' }} // Ensure the image doesn't exceed its container
+              className="w-full h-full object-contain"
+              style={{ maxWidth: '100%', maxHeight: '100%' }}
             />
           </Link>
         </div>
@@ -41,7 +44,9 @@ const { removeFromCart } = useContext(CartContext);
           <div className="flex items-center justify-between gap-4 mt-2">
             <div className="flex items-center gap-2">
               {/* Decrease Button */}
-              <button className="cursor-pointer border border-gray-300 p-2 rounded-md bg-gray-50 hover:bg-gray-200 transition">
+              <button
+                onClick={()=>decreaseAmount(id)}
+               className="cursor-pointer border border-gray-300 p-2 rounded-md bg-gray-50 hover:bg-gray-200 transition">
                 <IoIosRemove />
               </button>
 
@@ -51,7 +56,10 @@ const { removeFromCart } = useContext(CartContext);
               </div>
 
               {/* Increase Button */}
-              <button className="cursor-pointer border border-gray-300 p-2 rounded-md bg-gray-50 hover:bg-gray-200 transition">
+              <button
+                onClick={() => increaseAmount(id)}
+                className="cursor-pointer border border-gray-300 p-2 rounded-md bg-gray-50 hover:bg-gray-200 transition"
+              >
                 <IoIosAdd />
               </button>
             </div>
