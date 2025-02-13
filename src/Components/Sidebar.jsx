@@ -5,14 +5,15 @@ import TrashIcon from '@rsuite/icons/Trash';
 import CartItem from "../Components/CartItem";
 import { SidebarContext } from "../Contexts/SidebarContext";
 import { CartContext } from "../Contexts/CartContext";
+
 const Sidebar = () => {
   const { isOpen, handleClose } = useContext(SidebarContext);
-  const { cart } = useContext(CartContext);
- const {clearCart} = useContext(CartContext);
+  const { cart, clearCart } = useContext(CartContext);
   const sidebarOpenClose = () => (isOpen ? "right-0" : "-right-full");
+
   return (
     <div
-      className={`w-full h-full bg-white shadow-2xl fixed top-0 md:max-w-[450px] xl:max-w-[400px] transition-all duration-300 z-20 px-4 lg:px-[35px] ${sidebarOpenClose()}`}
+      className={`w-full h-full bg-white shadow-2xl fixed top-0 md:max-w-[450px] xl:max-w-[400px] transition-all duration-300 z-50 px-4 lg:px-[35px] ${sidebarOpenClose()}`}
     >
       <div className=" -ml-[10px] flex justify-between items-center mt-[20px] py-2 border-b-3 border-gray-400">
         <div className="capitalize font-bold">Shopping Bag(0)</div>

@@ -20,7 +20,7 @@ const Product = ({ items }) => {
   };
 
   return (
-    <div>
+    <div className="mt-10 md:mt-20">
       <div className="overflow-hidden flex justify-center items-center border border-[#e4e4e4] h-[280px] mb-5 p-[35px] group relative transform">
         <div className="w-[200px] mx-auto flex justify-center items-center">
           <img
