@@ -21,7 +21,7 @@ const Product = ({ items }) => {
 
   return (
     <div className="mt-10 md:mt-20">
-      <div className="overflow-hidden flex justify-center items-center border border-[#e4e4e4] h-[280px] mb-5 p-[35px] group relative transform">
+      <div className="overflow-hidden flex justify-center items-center border border-[#e4e4e4] h-[280px] mb-5 p-[35px] group relative md:mt-0 transform">
         <div className="w-[200px] mx-auto flex justify-center items-center">
           <img
             className="cursor-pointer group-hover:scale-110 transition duration-300"
@@ -57,7 +57,7 @@ const Product = ({ items }) => {
         <Link to={`/product/${id}`}>
           <h2 className="font-bold">{title}</h2>
         </Link>
-        <div className="font-bold">${price.toFixed(2)}</div>
+        <div className="font-bold text-red-600">${price.toFixed(2)}</div>
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ const CartItem = ({ items }) => {
   const { removeFromCart, increaseAmount,decreaseAmount } = useContext(CartContext);
 
   return (
-    <div className="relative flex justify-between items-center p-4 border-b border-gray-200 hover:bg-gray-50 transition duration-200 bg-white shadow-sm rounded-lg mb-4">
+    <div className="relative flex justify-between items-center p-4 border-b border-gray-200 hover:bg-gray-50 transition duration-200 bg-[#E8E3D9] shadow-sm rounded-lg mb-4 ">
       {/* Close (X) Button */}
       <button
         onClick={() => removeFromCart(id)}

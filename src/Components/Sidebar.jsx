@@ -8,14 +8,14 @@ import { CartContext } from "../Contexts/CartContext";
 
 const Sidebar = () => {
   const { isOpen, handleClose } = useContext(SidebarContext);
-  const { cart, clearCart } = useContext(CartContext);
+  const { cart, clearCart,total } = useContext(CartContext);
   const sidebarOpenClose = () => (isOpen ? "right-0" : "-right-full");
 
   return (
     <div
-      className={`w-full h-full bg-white shadow-2xl fixed top-0 md:max-w-[450px] xl:max-w-[400px] transition-all duration-300 z-50 px-4 lg:px-[35px] ${sidebarOpenClose()}`}
+      className={`w-full h-full shadow-2xl fixed top-0 md:max-w-[450px] xl:max-w-[400px] transition-all duration-300 z-50 px-4 lg:px-[35px] bg-[#F9F6EE] ${sidebarOpenClose()}`}
     >
-      <div className=" -ml-[10px] flex justify-between items-center mt-[20px] py-2 border-b-3 border-gray-400">
+      <div className=" -ml-[10px] flex justify-between items-center mt-[20px] py-2 border-b-3 border-gray-400  ">
         <div className="capitalize font-bold">Shopping Bag(0)</div>
 
         <div
@@ -25,16 +25,16 @@ const Sidebar = () => {
           <FaArrowRight />
         </div>
       </div>
-      <div>
+      <div className="flex flex-col gap-y-3 py-4 mt-4 overflow-y-auto overflow-x-hidden max-h-[75vh]">
         {cart.map((item) => (
           <CartItem items={item} key={item.id} />
         ))}
       </div>
       {/* total */}
-      <div className="flex flex-col gap-y-3 py-4 mt-4">
+      <div className="flex flex-col gap-y-3 py-4 mt-4 ">
         <div className="flex justify-between items-center">
           <div className="uppercase font-semibold"> 
-          <span className="mr-2">Total:</span>
+          <span className="mr-2">Total:</span>${parseFloat(total).toFixed(2)}
           </div>
         {/* trash */}
          <div onClick={clearCart}  className="cursor-pointer py-4 bg-red-500 text-white w-12 h-12 flex justify-center items-center text-xl"> 

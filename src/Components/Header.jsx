@@ -34,7 +34,7 @@ const Header = () => {
       <div className='flex items-center'>
         <div onClick={open_close} className='cursor-pointer flex relative'>
           <FaShoppingBag className='w-[24px] h-[30px]' />
-          <div className='bg-amber-200 absolute rounded-full h-[20px] w-[20px] top-[-10px] right-[-10px] flex justify-center items-center'>{itemAmount}</div>
+          <div className='bg-amber-200 absolute rounded-full h-[20px] w-[20px] top-[-10px] right-[-10px] flex justify-center items-center'>{parseFloat(itemAmount).toFixed(0)}</div>
         </div>
       </div>
     </header>
