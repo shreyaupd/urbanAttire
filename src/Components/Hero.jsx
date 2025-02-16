@@ -20,57 +20,21 @@ const slides = [
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Define colors for titles and descriptions based on slide index
-  const titleColors = [
-    'text-gray-500', // Slide 1 - Red
-    'text-yellow-600', // Slide 2 - Blue
-    'text-gray-300', // Slide 3 - Green
-    'text-yellow-500', // Slide 4 - Yellow
-  ];
-
-  const descriptionColors = [
-    'text-gray-700', // Slide 1 - Light Red
-    'text-yellow-300', // Slide 2 - Light Blue
-    'text-pink-200', // Slide 3 - Light Green
-    'text-yellow-300', // Slide 4 - Light Yellow
-  ];
-
-  // Unique animations for each slide
-  const titleAnimation = (index) => {
-    switch (index) {
-      case 0:
-        return { initial: { opacity: 0, scale: 0.8 }, animate: { opacity: 1, scale: 1 } };
-      case 1:
-        return { initial: { x: -100, opacity: 0 }, animate: { x: 0, opacity: 1 } };
-      case 2:
-        return { initial: { rotate: -10, opacity: 0 }, animate: { rotate: 0, opacity: 1 } };
-      case 3:
-        return { initial: { scale: 0.8, opacity: 0 }, animate: { scale: 1, opacity: 1 } };
-      default:
-        return { initial: { opacity: 0 }, animate: { opacity: 1 } };
-    }
+  // Improved animations for each slide
+  const titleAnimation = {
+    initial: { opacity: 0, y: -30 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, ease: "easeOut" },
   };
 
-  const descriptionAnimation = (index) => {
-    switch (index) {
-      case 0:
-        return { initial: { opacity: 0, y: 50 }, animate: { opacity: 1, y: 0 } };
-      case 1:
-        return { initial: { x: 100, opacity: 0 }, animate: { x: 0, opacity: 1 } };
-      case 2:
-        return { initial: { y: 50, opacity: 0 }, animate: { y: 0, opacity: 1 } };
-      case 3:
-        return { initial: { opacity: 0, y: -50 }, animate: { opacity: 1, y: 0 } };
-      default:
-        return { initial: { opacity: 0 }, animate: { opacity: 1 } };
-    }
+  const descriptionAnimation = {
+    initial: { opacity: 0, y: 30 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, ease: "easeOut", delay: 0.3 },
   };
 
   return (
-    <section className="relative bg-cover bg-center bg-no-repeat h-[900px] flex flex-col items-center justify-center overflow-hidden">
-      {/* Dark Overlay for Contrast */}
-      <div className="absolute inset-0 bg-black/40"></div>
-
+    <section className="relative bg-cover bg-center bg-no-repeat h-[600px] md:h-[700px] lg:h-[900px] flex flex-col items-center justify-center overflow-hidden">
       {/* Swiper Component */}
       <div className="w-full">
         <Swiper
@@ -79,21 +43,22 @@ const Hero = () => {
           slidesPerView={1}
           pagination={{ clickable: true }}
           loop={true}
-          autoplay={{ delay: 800, disableOnInteraction: false }}
-          speed={2000}
-          onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex)}
+          autoplay={{ delay: 2500, disableOnInteraction: false }}
+          speed={800}
+          onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex)} //gives index
         >
           {slides.map((slide, index) => (
             <SwiperSlide key={index} className="relative">
-              {/* Image with Slow Zoom Effect */}
-              <motion.img
-                src={slide.img}
-                alt={`Fashion ${index + 1}`}
-                className="w-full h-[900px] object-cover transition-all duration-1000 ease-in-out"
-                initial={{ scale: 1.2, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
-              />
+              {/* Image with Zoom-In and Zoom-Out Effect */}
+              <motion.div
+                transition={{ duration: 1, ease: "easeOut" }}
+                className="w-full h-[600px] md:h-[700px] lg:h-[900px] overflow-hidden"
+              >
+                <motion.img
+                  src={slide.img}
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
 
               {/* Unique Animated Text for Each Slide */}
               {currentIndex === index && (
@@ -101,24 +66,24 @@ const Hero = () => {
                   className="absolute top-[40%] left-1/2 transform -translate-x-1/2 text-center z-10"
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+                  transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
                 >
-                  {/* Title - Unique Animations per Slide */}
+                  {/* Title */}
                   <motion.h1
-                    className={`text-5xl font-semibold mb-3 tracking-wide drop-shadow-lg ${titleColors[index]}`}
-                    initial={titleAnimation(index).initial}
-                    animate={titleAnimation(index).animate}
-                    transition={{ duration: 0.7, ease: "easeOut" }}
+                    className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-3 tracking-wide drop-shadow-lg text-white"
+                    initial={titleAnimation.initial}
+                    animate={titleAnimation.animate}
+                    transition={titleAnimation.transition}
                   >
                     {slide.title}
                   </motion.h1>
 
-                  {/* Description - Unique Animations per Slide */}
+                  {/* Description */}
                   <motion.p
-                    className={`text-lg drop-shadow-md ${descriptionColors[index]}`}
-                    initial={descriptionAnimation(index).initial}
-                    animate={descriptionAnimation(index).animate}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
+                    className="text-base md:text-lg lg:text-xl drop-shadow-md text-white"
+                    initial={descriptionAnimation.initial}
+                    animate={descriptionAnimation.animate}
+                    transition={descriptionAnimation.transition}
                   >
                     {slide.description}
                   </motion.p>

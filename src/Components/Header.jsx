@@ -26,10 +26,9 @@ const Header = () => {
   }
 
   return (
-    <header className={`${isActive ? 'bg-white flex justify-between items-center px-[30px] pt-1' : 'bg-none flex justify-between items-center px-[30px] pt-1'} fixed w-full transition-all z-40`}>
+    <header className={`${isActive ? 'bg-amber-100 flex justify-between items-center px-[30px] pt-1' : 'bg-none flex justify-between items-center px-[30px] pt-1'} fixed w-full transition-all z-40`}>
       <Link to='/'><img src={logo} alt='logo' className='w-[100px] h-[100px]' /></Link>
       <div className='md:ml-[10px] xl:ml-[12px]'>
-        <div>Header</div>
       </div>
       <div className='flex items-center'>
         <div onClick={open_close} className='cursor-pointer flex relative'>

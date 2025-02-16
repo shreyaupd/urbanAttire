@@ -23,11 +23,13 @@ const Product = ({ items }) => {
     <div className="mt-10 md:mt-20">
       <div className="overflow-hidden flex justify-center items-center border border-[#e4e4e4] h-[280px] mb-5 p-[35px] group relative md:mt-0 transform">
         <div className="w-[200px] mx-auto flex justify-center items-center">
+        <Link to={`/product/${id}`}>
           <img
             className="cursor-pointer group-hover:scale-110 transition duration-300"
             src={image}
             alt={title}
           />
+        </Link>
         </div>
 
         <div className="absolute top-0 bg-transparent w-12 h-[84px] mt-1 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 right-0 md:group-hover:right-4">
