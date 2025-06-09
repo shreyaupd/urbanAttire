@@ -5,6 +5,7 @@ import ProductDetails from "./Pages/ProductDetails";
 import Sidebar from "./Components/Sidebar";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
+import Success from "./Components/Success";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/thank-you" element={<Success />} />
         </Routes>
         <Sidebar />
         <Footer />
