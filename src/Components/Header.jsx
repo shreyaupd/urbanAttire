@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from 'react';
 import { SidebarContext } from '../Contexts/SidebarContext';
 import { FaShoppingBag } from "react-icons/fa";
 import { CartContext } from '../Contexts/CartContext';
-import logo from '../img/logo.png';
+import logo from '../Img/logo.png';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
