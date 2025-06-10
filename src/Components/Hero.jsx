@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
-import heroimg from "../img/hero.jpg";
-import heroimg1 from "../img/hero3.jpg";
-import heroimg2 from "../img/hero2.jpg";
-import heroimg3 from "../img/hero4.jpg";
+import heroimg from "../Img/hero.jpg";
+import heroimg1 from "../Img/hero3.jpg";
+import heroimg2 from "../Img/hero2.jpg";
+import heroimg3 from "../Img/hero4.jpg";
 
 const slides = [
   {
@@ -57,7 +57,7 @@ const Hero = () => {
     }
   };
   return (
-<section className="relative bg-cover bg-center bg-no-repeat h-[600px] md:h-[700px] lg:h-[900px] flex flex-col items-center justify-center overflow-hidden">
+<section className="relative bg-cover bg-center bg-no-repeat h-[600px] md:h-[700px] lg:h-[900px] flex flex-col items-center justify-center overflow-hidden mt-0 pt-0">
   <div className="w-full max-w-md z-50 relative top-40 "> {/* z-50 to bring input to front */}
     <input 
       type="text"
