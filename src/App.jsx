@@ -6,7 +6,7 @@ import Sidebar from "./Components/Sidebar";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Success from "./Components/Success";
-
+import ProductList from "./Components/ProductList";
 const App = () => {
   return (
     <div className="overflow-hidden">
@@ -16,6 +16,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/thank-you" element={<Success />} />
+          <Route path="/search" element={<ProductList />} />
         </Routes>
         <Sidebar />
         <Footer />

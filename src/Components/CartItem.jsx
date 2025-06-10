@@ -8,7 +8,8 @@ const CartItem = ({ items }) => {
   const { removeFromCart, increaseAmount,decreaseAmount } = useContext(CartContext);
 
   return (
-    <div className="relative flex justify-between items-center p-4 border-b border-gray-200 hover:bg-gray-50 transition duration-200 bg-[#E8E3D9] shadow-sm rounded-lg mb-4 ">
+    <div className="relative flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border-b border-gray-200 hover:bg-gray-50 transition duration-200 bg-[#E8E3D9] shadow-sm rounded-lg mb-4">
+
       {/* Close (X) Button */}
       <button
         onClick={() => removeFromCart(id)}
@@ -18,7 +19,7 @@ const CartItem = ({ items }) => {
       </button>
 
       {/* Left Section: Image & Details */}
-      <div className="flex items-start gap-4 w-full">
+      <div className="flex flex-col sm:flex-row items-start gap-4 w-full">
         {/* Product Image */}
         <div className="flex justify-center items-center" style={{ width: '80px', height: '80px' }}>
           <Link to={`/product/${id}`}>
@@ -41,7 +42,7 @@ const CartItem = ({ items }) => {
           </div>
 
           {/* Quantity & Price Controls */}
-          <div className="flex items-center justify-between gap-4 mt-2">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-2 w-full">
             <div className="flex items-center gap-2">
               {/* Decrease Button */}
               <button
@@ -65,7 +66,7 @@ const CartItem = ({ items }) => {
             </div>
 
             {/* Prices */}
-            <div className="flex flex-col text-gray-700 ml-4 text-right">
+            <div className="flex flex-col text-gray-700 ml-0 sm:ml-4 text-left sm:text-right w-full sm:w-auto mt-2 sm:mt-0">
               <span className="font-semibold text-gray-900">
                 {`$${parseFloat(price * amount).toFixed(2)}`}
               </span>
