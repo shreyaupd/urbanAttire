@@ -57,8 +57,8 @@ const Hero = () => {
     }
   };
   return (
-<section className="relative bg-cover bg-center bg-no-repeat h-[600px] md:h-[700px] lg:h-[900px] flex flex-col items-center justify-center overflow-hidden mt-0 pt-0">
-  <div className="w-full max-w-md z-50 relative top-40 "> {/* z-50 to bring input to front */}
+<section className="relative bg-cover bg-center bg-no-repeat -top-20 h-[600px] md:h-[700px] lg:h-[900px] flex flex-col items-center justify-center overflow-hidden mt-0 pt-0">
+  <div className="w-full max-w-md z-50 relative top-60 "> {/* z-50 to bring input to front */}
     <input 
       type="text"
       placeholder="Search for products..."

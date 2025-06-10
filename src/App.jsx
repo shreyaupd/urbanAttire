@@ -10,7 +10,7 @@ import ProductList from "./Components/ProductList";
 const App = () => {
   return (
     <div className="overflow-hidden">
-      <Router>
+      <Router basename="/urbanAttire">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
