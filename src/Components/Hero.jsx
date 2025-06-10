@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // <-- ADD THIS
 import { Swiper, SwiperSlide } from "swiper/react";
 import { motion } from "framer-motion";
 import "swiper/css";
@@ -48,27 +47,8 @@ const Hero = () => {
     animate: { opacity: 1, y: 0, scale: 1 },
     transition: { duration: 0.8, ease: "easeOut", delay: 0.3 },
   };
-  const [searchTerm, setSearchTerm] = useState("");
-  const navigate = useNavigate();
-
-  const handleSearch = (e) => {
-    if (e.key === "Enter" && searchTerm.trim() !== "") {
-      navigate(`/search?query=${encodeURIComponent(searchTerm.trim())}`);
-    }
-  };
   return (
 <section className="relative bg-cover bg-center bg-no-repeat -top-20 h-[600px] md:h-[700px] lg:h-[900px] flex flex-col items-center justify-center overflow-hidden mt-0 pt-0">
-  <div className="w-full max-w-md z-50 relative top-60 "> {/* z-50 to bring input to front */}
-    <input 
-      type="text"
-      placeholder="Search for products..."
-      value={searchTerm}
-      onChange={(e) => setSearchTerm(e.target.value)}
-      onKeyDown={handleSearch}
-      className="w-full border bg-gray-300/50 rounded-lg p-4 border-gray-300 focus:outline-none  "
-    />
-    
-  </div>
 
   {/* Swiper Component */}
   <div className="w-full z-10 relative"> {/* ensure swiper below input */}
